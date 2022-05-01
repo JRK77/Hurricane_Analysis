@@ -47,12 +47,18 @@ updated_damages_report = damages_convert(damages)
 def hurricane_name_function(h_name, h_months, h_years, h_max_wind_speed, h_areas_affected, h_damage, h_deaths):
   new_dict = {}
   for a in range(len(h_name)):
-    new_dict.update({"Name": h_name[a], "Month": h_months[a], "Year": h_years[a], "Max Sustained Wind": h_max_wind_speed[a], "Areas Affected": h_areas_affected[a], "Damage": h_damage[a], "Deaths": h_deaths[a]})
+    new_dict[a] = {
+      "Name": h_name[a], 
+      "Month": h_months[a], 
+      "Year": h_years[a], 
+      "Max Sustained Wind": h_max_wind_speed[a], 
+      "Areas Affected": h_areas_affected[a], 
+      "Damage": h_damage[a], 
+      "Deaths": h_deaths[a]}
   print(new_dict)
 
 
 # Create and view the hurricanes dictionary
- #Something isn't working with this code below
 hurricane_name_function(names, months, years, max_sustained_winds, areas_affected, updated_damages_report, deaths)
 # 3
 # Organizing by Year
