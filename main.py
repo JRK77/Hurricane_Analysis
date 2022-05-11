@@ -84,6 +84,7 @@ for area in areas_affected:
       areas_dict[i] += 1
   
 # create dictionary of areas to store the number of hurricanes involved in
+      
 # 5 
 # Calculating Maximum Hurricane Count
 
@@ -101,17 +102,18 @@ print(max_areas_affected(areas_dict))
 
 # 6
 # Calculating the Deadliest Hurricane
-def fatality(hurricanes):
-    hurricane_most_deaths = ''
-    number_of_deaths = 0
-    for hurricane in hurricanes:
-        if hurricanes[hurricane]['Deaths'] > number_of_deaths:
-            hurricane_most_deaths = hurricane
-            number_of_deaths = hurricanes[hurricane]['Deaths']
-    return number_of_deaths, hurricane_most_deaths
+def find_most_deaths(hurricanes):
+    max_deaths_hurricane = ""
+    max_death_count = 0
+    for hurr in hurricanes:
+        if hurricanes[hurr]["Deaths"] > max_death_count:
+            max_deaths_hurricane = hurr
+            max_death_count = hurricanes[hurr]["Deaths"]
+    return max_deaths_hurricane, max_death_count
 
 # find highest mortality hurricane and the number of deaths
-print(fatality(hurricanes))
+print(find_most_deaths(areas_dict))
+  
 # 7
 # Rating Hurricanes by Mortality
 
