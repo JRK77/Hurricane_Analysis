@@ -41,7 +41,7 @@ def damages_convert(damages_list):
   return new_damages
 
 # test function by updating damages
-updated_damages_report = damages_convert(damages)
+updated_damages = damages_convert(damages)
 # 2 
 # Create a Table
 def hurricane_name_function(h_name, h_months, h_years, h_max_wind_speed, h_areas_affected, h_damage, h_deaths):
@@ -59,30 +59,60 @@ def hurricane_name_function(h_name, h_months, h_years, h_max_wind_speed, h_areas
 
 
 # Create and view the hurricanes dictionary
-hurricane_name_function(names, months, years, max_sustained_winds, areas_affected, updated_damages_report, deaths)
+years_dict = {}
+
+for n, m, y, w, a, d, t in zip(names, months, years, max_sustained_winds, areas_affected, updated_damages, deaths):
+  years_dict.update({y: [{"Name": n, "Month": m, "Year": y, "Max Sustained Wind": w, "Areas Affected": a, "Damage": d, "Deaths": t}]})
+
+
 # 3
 # Organizing by Year
-
+print(years_dict)
 # create a new dictionary of hurricanes with year and key
 
 
 # 4
 # Counting Damaged Areas
+areas_dict = {}
 
+for area in areas_affected:
+  for i in area:
+    if i not in areas_dict:
+      areas_dict[i] = 1
+    else:
+      areas_dict[i] += 1
+  
 # create dictionary of areas to store the number of hurricanes involved in
-
 
 # 5 
 # Calculating Maximum Hurricane Count
 
+def max_areas_affected(areas_count):
+  max_area_count = 0
+  max_area = ""
+  for area in areas_count:
+    if areas_count[area] > max_area_count:
+      max_area_count = areas_count[area]
+      max_area = area
+    return max_area_count, max_area
+      
 # find most frequently affected area and the number of hurricanes involved in
-
+print(max_areas_affected(areas_dict))
 
 # 6
 # Calculating the Deadliest Hurricane
+def fatality(hurricanes):
+    hurricane_most_deaths = ''
+    number_of_deaths = 0
+    for hurricane in hurricanes:
+        if hurricanes[hurricane]['Deaths'] > number_of_deaths:
+            hurricane_most_deaths = hurricane
+            number_of_deaths = hurricanes[hurricane]['Deaths']
+    return number_of_deaths, hurricane_most_deaths
 
 # find highest mortality hurricane and the number of deaths
-
+most_deaths, number_of_deaths = fatality(zip(names, months, years, max_sustained_winds, areas_affected, updated_damages, deaths))
+print(most_deaths, number_of_deaths)
 # 7
 # Rating Hurricanes by Mortality
 
