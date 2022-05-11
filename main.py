@@ -67,9 +67,10 @@ for n, m, y, w, a, d, t in zip(names, months, years, max_sustained_winds, areas_
 
 # 3
 # Organizing by Year
-print(years_dict)
+for n, m, y, w, a, d, t in zip(names, months, years, max_sustained_winds, areas_affected, updated_damages, deaths):
+  years_dict.update({y: [{"Name": n, "Month": m, "Year": y, "Max Sustained Wind": w, "Areas Affected": a, "Damage": d, "Deaths": t}]})
 # create a new dictionary of hurricanes with year and key
-
+print(years_dict)
 
 # 4
 # Counting Damaged Areas
@@ -83,7 +84,6 @@ for area in areas_affected:
       areas_dict[i] += 1
   
 # create dictionary of areas to store the number of hurricanes involved in
-
 # 5 
 # Calculating Maximum Hurricane Count
 
@@ -111,8 +111,7 @@ def fatality(hurricanes):
     return number_of_deaths, hurricane_most_deaths
 
 # find highest mortality hurricane and the number of deaths
-most_deaths, number_of_deaths = fatality(zip(names, months, years, max_sustained_winds, areas_affected, updated_damages, deaths))
-print(most_deaths, number_of_deaths)
+print(fatality(hurricanes))
 # 7
 # Rating Hurricanes by Mortality
 
